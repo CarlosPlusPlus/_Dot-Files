@@ -7,22 +7,31 @@
   }
 
   # This function builds your prompt. It is called below
-  function prompt {
-    # Define some local colors
-    local         RED="\[\033[0;31m\]" # This syntax is some weird bash color thing I never
-    local   LIGHT_RED="\[\033[1;31m\]" # really understood
-    local      YELLOW="\[\033[0;33m\]"
-    local        CHAR="⚡"
-    # ♥ ☆  ★ - Keeping some cool ASCII Characters for reference
+  # function prompt {
+  #   # Define some local colors
+  #   local         RED="\[\033[0;31m\]" # This syntax is some weird bash color thing I never
+  #   local   LIGHT_RED="\[\033[1;31m\]" # really understood
+  #   local      YELLOW="\[\033[0;33m\]"
+  #   local        CHAR="⚡"
+  #   # ♥ ☆  ★ - Keeping some cool ASCII Characters for reference
 
-    # Here is where we actually export the PS1 Variable which stores the text for your prompt
-    export PS1="\[\e]2;\u@\h\a[\[\e[37;44;1m\]\t\[\e[0m\]]$RED\$(parse_git_branch) \[\e[32m\]\W\[\e[0m\]\n\[\e[0;33m\]$CHAR \[\e[0m\]"
-      PS2='> '
-      PS4='+ '
-    }
+  #   # Here is where we actually export the PS1 Variable which stores the text for your prompt
+  #   export PS1="\[\e]2;\u@\h\a[\[\e[37;44;1m\]\t\[\e[0m\]]$RED\$(parse_git_branch) \[\e[32m\]\W\[\e[0m\]\n\[\e[0;33m\]$CHAR \[\e[0m\]"
+  #     PS2='> '
+  #     PS4='+ '
+  #   }
 
-  # Finally call the function and our prompt is all pretty
-  prompt
+  # # Finally call the function and our prompt is all pretty
+  # prompt
+
+  # Call and initialize Powerline Shell.
+  # https://github.com/milkbikis/powerline-shell
+
+  function _update_ps1() {
+    export PS1="$(~/Development/Tools/powerline-shell/powerline-shell.py --cwd-only --colorize-hostname --mode compatible $? 2> /dev/null)"
+  }
+
+  export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 
   # For more prompt coolness, check out Halloween Bash:
   # http://xta.github.io/HalloweenBash/
@@ -37,12 +46,14 @@
   # required libraries so other programs can reliably call the variable name
   # instead of a hardcoded path.
 
+    # JAVA_MAVEN_PATH
+    export M2_HOME="/usr/local/apache-maven/apache-maven-3.1.1"
+    export M2=$M2_HOME/bin    
+
     # NODE_PATH
-    # Node Path from Homebrew I believe
     export NODE_PATH="/usr/local/share/npm/bin:/usr/local/lib/node:/usr/local/lib/node_modules"
 
     # PYTHON_SHARE
-    # Python Shared Path from Homebrew I believe
     export PYTHON_SHARE='/usr/local/share/python'
 
     # Those NODE & Python Paths won't break anything even if you
@@ -63,6 +74,10 @@
     export GIT_EDITOR="subl -w"
     export EDITOR="subl -w"
 
+    export LANGUAGE=en_US.UTF-8
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+
   # Paths
 
     # The USR_PATHS variable will just store all relevant /usr paths for easier usage
@@ -76,7 +91,8 @@
     # storing the binaries (programs) that our system would want.
     # Also, Homebrew adopts this convetion so things installed via Homebrew
     # get symlinked into /usr/local
-    export USR_PATHS="/usr/local:/usr/local/bin:/usr/local/sbin:/usr/bin"
+    export USR_PATHS="/usr/local/bin:/usr/local:/usr/local/sbin:/usr/bin"
+    export PSQL_PATH="/Applications/Postgres.app/Contents/MacOS/bin"
 
     # Hint: You can interpolate a variable into a string by using the $VARIABLE notation as below.
 
@@ -86,7 +102,7 @@
     # Our PATH variable is special and very important. Whenever we type a command into our shell,
     # it will try to find that command within a directory that is defined in our PATH.
     # Read http://blog.seldomatt.com/blog/2012/10/08/bash-and-the-one-true-path/ for more on that.
-    export PATH="$USR_PATHS:$PYTHON_SHARE:$NODE_PATH:$PATH"
+    export PATH="$PSQL_PATH:$USR_PATHS:$PYTHON_SHARE:$NODE_PATH:$PATH"
 
     # If you go into your shell and type: $PATH you will see the output of your current path.
     # For example, mine is:
@@ -110,7 +126,7 @@ function code {
 }
 
 function blog {
-  cd /Users/carloslazo/Development/Blog/cjlwired.github.io/
+  cd /Users/carloslazo/Development/Blog/carlosplusplus.github.io/
 }
 
 function fis {
@@ -121,8 +137,8 @@ function proj {
   cd /Users/carloslazo/Development/Projects/
 }
 
-function shoes {
-  bin/shoes
+function web {
+  cd /Users/carloslazo/Development/Websites/
 }
 
 # A function to easily grep for a matching process
@@ -157,7 +173,6 @@ function extract () {
 }
 
 # This function is used to post to Octopress.
-
 function update_blog {
   cd /Users/carloslazo/Development/Blog/cjlwired.github.io
   rake generate
@@ -165,6 +180,11 @@ function update_blog {
   git add .
   git commit -am $@
   git push
+}
+
+# For running bundle exec
+function be {
+  bundle exec $@
 }
 
 # Aliases
@@ -182,6 +202,9 @@ function update_blog {
   alias gb="git branch"
   alias gba="git branch -a"
 
+  # Postgresql
+  alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+  alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 # Final Configurations and Plugins
 # =====================
