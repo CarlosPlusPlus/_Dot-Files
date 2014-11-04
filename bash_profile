@@ -1,34 +1,12 @@
+# ======================
 # Configuring Our Prompt
 # ======================
-
-  # This function is called in your prompt to output your active git branch.
-  function parse_git_branch {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-  }
-
-  # This function builds your prompt. It is called below
-  # function prompt {
-  #   # Define some local colors
-  #   local         RED="\[\033[0;31m\]" # This syntax is some weird bash color thing I never
-  #   local   LIGHT_RED="\[\033[1;31m\]" # really understood
-  #   local      YELLOW="\[\033[0;33m\]"
-  #   local        CHAR="⚡"
-  #   # ♥ ☆  ★ - Keeping some cool ASCII Characters for reference
-
-  #   # Here is where we actually export the PS1 Variable which stores the text for your prompt
-  #   export PS1="\[\e]2;\u@\h\a[\[\e[37;44;1m\]\t\[\e[0m\]]$RED\$(parse_git_branch) \[\e[32m\]\W\[\e[0m\]\n\[\e[0;33m\]$CHAR \[\e[0m\]"
-  #     PS2='> '
-  #     PS4='+ '
-  #   }
-
-  # # Finally call the function and our prompt is all pretty
-  # prompt
 
   # Call and initialize Powerline Shell.
   # https://github.com/milkbikis/powerline-shell
 
   function _update_ps1() {
-    export PS1="$(~/Development/Tools/powerline-shell/powerline-shell.py --cwd-only --colorize-hostname --mode compatible $? 2> /dev/null)"
+    export PS1="$(~/Development/Setup/dot_files/powerline-shell/powerline-shell.py --cwd-only --colorize-hostname --mode compatible $? 2> /dev/null)"
   }
 
   export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
@@ -48,7 +26,7 @@
 
     # JAVA_MAVEN_PATH
     export M2_HOME="/usr/local/apache-maven/apache-maven-3.1.1"
-    export M2=$M2_HOME/bin    
+    export M2=$M2_HOME/bin
 
     # NODE_PATH
     export NODE_PATH="/usr/local/share/npm/bin:/usr/local/lib/node:/usr/local/lib/node_modules"
