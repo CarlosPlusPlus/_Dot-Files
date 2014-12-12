@@ -6,7 +6,7 @@
   # https://github.com/milkbikis/powerline-shell
 
   function _update_ps1() {
-    export PS1="$(~/Development/Setup/dot_files/powerline-shell/powerline-shell.py --cwd-only --colorize-hostname --mode compatible $? 2> /dev/null)"
+    export PS1="$(~/Development/Setup/dot_files/powerline-shell/powerline-shell.py --colorize-hostname --mode compatible $? 2> /dev/null)"
   }
 
   export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
