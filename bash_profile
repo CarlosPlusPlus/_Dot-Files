@@ -6,7 +6,7 @@
   # https://github.com/milkbikis/powerline-shell
 
   function _update_ps1() {
-    export PS1="$(~/Development/Setup/dot_files/powerline-shell/powerline-shell.py --colorize-hostname --cwd-only --mode compatible $? 2> /dev/null)"
+    export PS1="$(~/Development/setup/dot-files/powerline-shell/powerline-shell.py --colorize-hostname --cwd-only --mode compatible $? 2> /dev/null)"
   }
 
   export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
@@ -30,13 +30,6 @@
 
     # NODE_PATH
     export NODE_PATH="/usr/local/share/npm/bin:/usr/local/lib/node:/usr/local/lib/node_modules"
-
-    # PYTHON_SHARE
-    export PYTHON_SHARE='/usr/local/share/python'
-
-    # Those NODE & Python Paths won't break anything even if you
-    # don't have NODE or Python installed. Eventually you will and
-    # then you don't have to update your bash_profile
 
   # Configurations
 
@@ -80,11 +73,7 @@
     # Our PATH variable is special and very important. Whenever we type a command into our shell,
     # it will try to find that command within a directory that is defined in our PATH.
     # Read http://blog.seldomatt.com/blog/2012/10/08/bash-and-the-one-true-path/ for more on that.
-    export PATH="$PSQL_PATH:$USR_PATHS:$PYTHON_SHARE:$NODE_PATH:$PATH"
-
-    # If you go into your shell and type: $PATH you will see the output of your current path.
-    # For example, mine is:
-    # /Users/avi/.rvm/gems/ruby-1.9.3-p392/bin:/Users/avi/.rvm/gems/ruby-1.9.3-p392@global/bin:/Users/avi/.rvm/rubies/ruby-1.9.3-p392/bin:/Users/avi/.rvm/bin:/usr/local:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/local/mysql/bin:/usr/local/share/python:/bin:/usr/sbin:/sbin:
+    export PATH="$PSQL_PATH:$USR_PATHS:$NODE_PATH:$PATH"
 
 # Helpful Functions
 # =====================
@@ -104,19 +93,15 @@ function code {
 }
 
 function blog {
-  cd /Users/carloslazo/Development/Blog/carlosplusplus.github.io/
-}
-
-function fis {
-  cd /Users/carloslazo/Development/FlatironSchool/
+  cd /Users/carloslazo/Development/blog/carlosplusplus.github.io/
 }
 
 function proj {
-  cd /Users/carloslazo/Development/Projects/
+  cd /Users/carloslazo/Development/projects/
 }
 
 function web {
-  cd /Users/carloslazo/Development/Websites/
+  cd /Users/carloslazo/Development/websites/
 }
 
 # A function to easily grep for a matching process
