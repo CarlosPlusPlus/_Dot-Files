@@ -10,7 +10,7 @@ def add_ruby_version_segment():
           gem = os.environ["GEM_HOME"].split("@")
           if len(gem) > 1:
             version += " " + gem[1]
-        powerline.append(' %s ' % version, 15, 1)
+        powerline.append(version, 15, 1)
     except OSError:
         return
 
