@@ -1,0 +1,21 @@
+{
+  "segments": [
+    "username",
+    "ssh",
+    "ruby_version",
+    "cwd",
+    "read_only",
+    "git",
+    "hg",
+    "svn",
+    "jobs",
+    "root"
+  ],
+  "cwd": {
+    "mode": "dironly",
+    "max_depth": 1
+  },
+  "vcs": {
+    "show_symbol": "true"
+  }
+}
