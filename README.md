@@ -16,3 +16,17 @@ Issues with fonts:
 
 > Use built-in powerline glyphs.
 
+### New Computer Applications
+
+* 1Password
+* [Alfred](https://www.alfredapp.com/)
+	* [Emoji Workflow](https://github.com/jsumners/alfred-emoji/)
+* [Bear](https://bear.app/)
+* Chrome | Safari | Firefox
+* DropBox
+* iTerm 2
+* MacDown
+* Skitch
+* Spotify
+* Sublime Text 3
+* VS Code
