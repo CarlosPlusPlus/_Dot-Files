@@ -59,3 +59,12 @@ Issues with fonts:
 	* [Package Control](https://packagecontrol.io/installation)
 	* [Sync Packages to Dropbox](https://packagecontrol.io/docs/syncing#dropbox-osx)
 * [VS Code](https://code.visualstudio.com/)
+
+For access to the `subl` command:
+
+```sh
+ln -sv "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
+```
+
+Inspiration:
+https://gist.github.com/martinbuberl/5823ed247d279d1a2d06
