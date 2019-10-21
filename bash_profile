@@ -29,7 +29,10 @@ fi
 export NODE_PATH="/usr/local/share/npm/bin:/usr/local/lib/node:/usr/local/lib/node_modules"
 # PY_PATH
 export PY_PATH="~/Library/Python/3.6/bin"
+
+# Use python3 as the default.
 alias python=python3
+alias pip=pip3
 
 # Those NODE & Python Paths won't break anything even if you
 # don't have NODE or Python installed. Eventually you will and
