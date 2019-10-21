@@ -21,12 +21,14 @@ Issues with fonts:
 * 1Password
 * [Alfred](https://www.alfredapp.com/)
 	* [Emoji Workflow](https://github.com/jsumners/alfred-emoji/)
+* [Bartender](https://www.macbartender.com)
 * [Bear](https://bear.app/)
 * Chrome | Safari | Firefox
 * DropBox
 * iTerm 2
-* MacDown
+* [MacDown](https://macdown.uranusjr.com)
 * Skitch
+* [Spectacle](https://www.spectacleapp.com)
 * Spotify
 * Sublime Text 3
 * VS Code
