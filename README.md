@@ -68,3 +68,11 @@ ln -sv "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/loc
 
 Inspiration:
 https://gist.github.com/martinbuberl/5823ed247d279d1a2d06
+
+### Tips
+
+By default, auto create an upstream branch on a new `git push`:
+
+```
+git config --global push.default current
+```
